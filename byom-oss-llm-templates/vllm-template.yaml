@@ -57,12 +57,12 @@ spec:
     spec: |
       predictor:
         imagePullSecrets:
-        - name: <YOUR_DOCKER_SECRET>
+        - name: docker-secret
         minReplicas: 1
         maxReplicas: 1
         containers:
         - name: kserve-container
-          image: docker.io/<YOUR_DOCKER_USER>/vllm-openai:ai-core
+          image: docker.io/zeronguyen227/vllm-openai:ai-core
           ports:
             - containerPort: 8000
               protocol: TCP
@@ -81,4 +81,4 @@ spec:
               --quantization {{inputs.parameters.quantization}}
           env:
             - name: MODEL
-              value: "{{inputs.parameters.modelName}}"s
+              value: "{{inputs.parameters.modelName}}"
